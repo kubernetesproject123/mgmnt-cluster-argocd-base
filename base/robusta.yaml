@@ -1,0 +1,61 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: robusta
+  namespace: argocd
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            clusterType: "host"
+  template:
+    metadata:
+      name: '{{name}}--robusta'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://robusta-charts.storage.googleapis.com'
+        targetRevision: 0.10.31
+        helm:
+          values: |-
+            clusterName: host-cluster
+            isSmallCluster: false
+            globalConfig:
+              signing_key: 
+              account_id: 
+            sinksConfig:
+            - slack_sink:
+                name: main_slack_sink
+                slack_channel: 
+                api_key: x
+            - robusta_sink:
+                name: robusta_ui_sink
+                token: ==
+            enablePlatformPlaybooks: true
+            kubewatch:
+              resources:
+                requests:
+                  cpu: 10m
+                  memory: 100Mi
+                limits:
+                  memory: 100Mi
+            runner:
+              sendAdditionalTelemetry: false
+            rsa:
+              private: 
+              public: 
+        chart: robusta
+      destination:
+        server: '{{server}}'
+        namespace: argocd
+      syncPolicy:
+        automated:
+          prune: true
+          allowEmpty: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
+          - ApplyOutOfSyncOnly=true
