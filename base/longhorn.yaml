@@ -46,7 +46,7 @@ spec:
 
             defaultSettings:
               createDefaultDiskLabeledNodes: true
-              taintToleration: kaas=storage:NoSchedule
+              #taintToleration: kaas=storage:NoSchedule
               replicaAutoBalance: best-effort
               v1DataEngine: true
               v2DataEngine: true
