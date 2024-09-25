@@ -100,11 +100,11 @@ metadata:
   name: longhorn-storageclass
   namespace: argocd
 spec:
-  generators:
-    - clusters:
-        selector:
-          matchLabels:
-            clusterType: "host"
+  # generators:
+  #   - clusters:
+  #       selector:
+  #         matchLabels:
+  #           clusterType: "host"
   template:
     metadata:
       name: '{{name}}--longhorn-storageclass'
