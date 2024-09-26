@@ -9,6 +9,93 @@ metadata:
     kubevirt-manager.io/version: 1.3.1
 
 ---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: controlplaneproviders.cluster.x-k8s.io
+spec:
+  group: cluster.x-k8s.io
+  versions:
+    - name: v1alpha4
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+  scope: Cluster
+  names:
+    plural: controlplaneproviders
+    singular: controlplaneprovider
+    kind: ControlPlaneProvider
+    shortNames:
+      - cpp
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: infrastructureproviders.cluster.x-k8s.io
+spec:
+  group: cluster.x-k8s.io
+  versions:
+    - name: v1alpha4
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+  scope: Cluster
+  names:
+    plural: infrastructureproviders
+    singular: infrastructureprovider
+    kind: InfrastructureProvider
+    shortNames:
+      - ip
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: coreproviders.cluster.x-k8s.io
+spec:
+  group: cluster.x-k8s.io
+  versions:
+    - name: v1alpha4
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+  scope: Cluster
+  names:
+    plural: coreproviders
+    singular: coreprovider
+    kind: CoreProvider
+    shortNames:
+      - cp
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: bootstrapproviders.cluster.x-k8s.io
+spec:
+  group: cluster.x-k8s.io
+  versions:
+    - name: v1alpha4
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+  scope: Cluster
+  names:
+    plural: bootstrapproviders
+    singular: bootstrapprovider
+    kind: BootstrapProvider
+    shortNames:
+      - bp
+---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
