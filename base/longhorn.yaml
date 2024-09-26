@@ -51,23 +51,23 @@ spec:
               v1DataEngine: true
               v2DataEngine: true
 
-            # longhornUI:
-            #   nodeSelector:
-            #     kaas/group: "control"
+             longhornUI:
+               nodeSelector:
+                 kaas/group: "control"
 
-            # longhornManager:
-            #   tolerations:
-            #     - key: "kaas"
-            #       operator: "Equal"
-            #       value: "storage"
-            #       effect: "NoSchedule"
+             longhornManager:
+               tolerations:
+                 - key: "kaas"
+                   operator: "Equal"
+                   value: "control"
+                   effect: "NoSchedule"
 
-            # longhornDriver:
-            #   tolerations:
-            #     - key: "kaas"
-            #       operator: "Equal"
-            #       value: "storage"
-            #       effect: "NoSchedule"
+             longhornDriver:
+               tolerations:
+                 - key: "kaas"
+                   operator: "Equal"
+                   value: "control"
+                   effect: "NoSchedule"
 
             # https://github.com/longhorn/longhorn/issues/6246#issuecomment-1625065311
             longhornConversionWebhook:
