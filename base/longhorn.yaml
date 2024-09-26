@@ -59,14 +59,14 @@ spec:
                tolerations:
                  - key: "kaas"
                    operator: "Equal"
-                   value: "control"
+                   value: "storage"
                    effect: "NoSchedule"
 
              longhornDriver:
                tolerations:
                  - key: "kaas"
                    operator: "Equal"
-                   value: "control"
+                   value: "storage"
                    effect: "NoSchedule"
 
             # https://github.com/longhorn/longhorn/issues/6246#issuecomment-1625065311
