@@ -26,8 +26,8 @@ spec:
   #                   operator: In
   #                   values:
   #                     - 'control'
-  workloads:
-    nodePlacement:
+  #workloads:
+    #nodePlacement:
       # tolerations:
       #   - key: "kaas"
       #     operator: "Equal"
