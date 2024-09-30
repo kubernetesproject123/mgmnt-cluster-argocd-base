@@ -58,21 +58,21 @@ spec:
   version: v1.4.4
   deployment:
     containers: []
-    # Run on storage nodes to prevent routing issue to vip on control & compute nodes
-    # affinity:
-    #   nodeAffinity:
-    #     requiredDuringSchedulingIgnoredDuringExecution:
-    #       nodeSelectorTerms:
-    #         - matchExpressions:
-    #             - key: 'kaas/group'
-    #               operator: In
-    #               values:
-    #                 - 'storage'
-    # tolerations:
-    #   - key: "kaas"
-    #     operator: "Equal"
-    #     value: "storage"
-    #     effect: "NoSchedule"
+    #Run on storage nodes to prevent routing issue to vip on control & compute nodes
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: 'kaas/group'
+                  operator: In
+                  values:
+                    - 'control'
+    tolerations:
+      - key: "kaas"
+        operator: "Equal"
+        value: "storage"
+        effect: "NoSchedule"
 ---
 apiVersion: operator.cluster.x-k8s.io/v1alpha1
 kind: InfrastructureProvider
